@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd
+                                                                                                                                                                                                 http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.2.xsd">
+
+
+  <changeSet id="1.0.0" author="hiepdinh">
+    <comment>Initial version 1.0.0</comment>
+  </changeSet>
+
+  <changeSet id="1.0.1" author="hoc.nguyen">
+    <comment>Add drugs</comment>
+
+    <!-- Drugs -->
+    <createTable tableName="drugs">
+      <column name="id" type="INT UNSIGNED" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="generic_name" type="VARCHAR(255)" />
+      <column name="brand_name" type="VARCHAR(255)" />
+      <column name='medicine_type' type="VARCHAR(255)" />
+      <!-- System attributes -->
+      <column name="created_by" type="INT UNSIGNED" />
+      <column name="created_at" type="DATETIME" defaultValueDate="CURRENT_TIMESTAMP" />
+      <column name="updated_by" type="INT UNSIGNED" />
+      <column name="updated_at" type="DATETIME" defaultValueDate="CURRENT_TIMESTAMP" />
+      <column name="deleted_at" type="DATETIME" />
+    </createTable>
+  </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0.31
+    container_name: mysql_8_0_31
+    command: 
+      --default-authentication-plugin=mysql_native_password 
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --explicit_defaults_for_timestamp 
+      --default-time-zone=+00:00 
+      # --log_bin_trust_function_creators=1 
+      # --sql_mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+      # --wait_timeout=60
+      # --interactive_timeout=60
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"

@@ -1,0 +1,33 @@
+jobs:
+- job: Build_Service
+  displayName: Build Service
+  pool:
+    name: Azure Pipelines
+  steps:
+  - checkout: self
+    clean: true
+  - task: DockerInstaller@0
+    inputs:
+     dockerVersion: '20.10.17'
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        docker build -t $(containerRegistryName).azurecr.io/drugdataservice:$(Build.BuildId) --build-arg DB_HOST=$(DB_HOST) --build-arg DB_USER=$(DB_USER) --build-arg DB_PORT=$(DB_PORT) --build-arg DB_PASS=$(DB_PASS) --build-arg DB_NAME=$(dbname02) .
+        az acr login --name $(containerRegistryName).azurecr.io -u $(containerRegistryName) -p $(acr-pass)
+        docker push $(containerRegistryName).azurecr.io/drugdataservice:$(Build.BuildId)
+  - task: CopyFiles@2
+    displayName: Copy Deployment Files
+    inputs:
+      SourceFolder: deployment
+      Contents: '**'
+      TargetFolder: $(Build.ArtifactStagingDirectory)/deployment
+  - task: CopyFiles@2
+    displayName: Copy Database Files
+    inputs:
+      SourceFolder: 'database'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+...

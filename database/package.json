@@ -1,0 +1,24 @@
+{
+  "name": "drug-data-service-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dbdoc": "java -jar libs/liquibase-core-3.5.4.jar --logLevel=info dbDoc ./dbdoc",
+    "dropExtentions": "java -jar libs/liquibase-core-3.5.4.jar --changeLogFile drop-extentions.xml --logLevel=info update",
+    "dropAll": "java -jar libs/liquibase-core-3.5.4.jar --logLevel=info dropAll",
+    "init": "npm run dropAll && java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info update",
+    "init:test": "npm run dropAll && java -jar libs/liquibase-core-3.5.4.jar --contexts=TEST --logLevel=info update",
+    "update:test": "java -jar libs/liquibase-core-3.5.4.jar --contexts=TEST --logLevel=info update",
+    "update": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info update",
+    "changeLogSync": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info changeLogSync",
+    "changeLogSync:test": "java -jar libs/liquibase-core-3.5.4.jar --contexts=TEST --logLevel=info changeLogSync",
+    "updateSQL": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info updateSQL",
+    "validate:test": "java -jar libs/liquibase-core-3.5.4.jar --contexts=TEST --logLevel=info validate",
+    "validate": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info validate",
+    "releaseLocks": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info releaseLocks",
+    "diff": "java -jar libs/liquibase-core-3.5.4.jar --contexts=PROD --logLevel=info diff"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.azure.servicebus
+  version: v1
+  metadata:
+    - name: connectionString # Required when not using Azure Authentication.
+      value: "Endpoint=sb://guardianlite-dev-sbn.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=S305r/rXri5dOIHbbOjMTNFP0gPqZjMLmxqSrI4tht8="
