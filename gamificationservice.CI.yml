@@ -13,7 +13,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        docker build -t $(containerRegistryName).azurecr.io/gamificationservice:$(Build.BuildId) --build-arg DB_HOST=$(DB_HOST) --build-arg DB_USER=$(DB_USER) --build-arg DB_PORT=$(DB_PORT) --build-arg DB_PASS=$(DB_PASS) --build-arg DB_NAME=$(dbname02) .
+        docker build -t $(containerRegistryName).azurecr.io/gamificationservice:$(Build.BuildId) --build-arg DB_HOST=$(DB_HOST) --build-arg DB_USER=$(DB_USER) --build-arg DB_PORT=$(DB_PORT) --build-arg DB_PASS=$(DB_PASS) --build-arg DB_NAME=$(dbname05) .
         az acr login --name $(containerRegistryName).azurecr.io -u $(containerRegistryName) -p $(acr-pass)
         docker push $(containerRegistryName).azurecr.io/gamificationservice:$(Build.BuildId)
   - task: CopyFiles@2
