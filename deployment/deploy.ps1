@@ -10,7 +10,7 @@ Param (
 
     [string] $environmentName = 'dev',
 
-    [string] $containerImage = 'drugdataservice:latest',
+    [string] $containerImage = 'gamificationservice:latest',
 
     [string] $azureKeyVault = 'guardiandbkeys',
 
@@ -20,7 +20,7 @@ Param (
 
     [string] $appport = '8888',
 
-    [string] $dbname = 'drug_data_service',
+    [string] $dbname = 'gamification_service',
 
     [int] $minContainerReplicas = 1,
 

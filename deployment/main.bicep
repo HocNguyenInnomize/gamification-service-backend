@@ -61,7 +61,7 @@ module gamificationService 'container-http.bicep' = {
 }
 
 // Add Gamification Service to API Management
-module apimDrugData 'api-management-api.bicep' = {
+module apimGamification 'api-management-api.bicep' = {
   name: 'apim-${ServiceName}'
   params: {
     apimName: 'guardianlite-${environmentName == 'prod' ? 'production' : environmentName == 'dev' ? 'develop' : 'stage'}-apimng'
